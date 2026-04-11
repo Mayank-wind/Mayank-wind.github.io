@@ -10,103 +10,383 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes gradientShift {
+      0%, 100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 40px rgba(56, 189, 248, 0.6);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes cardReveal {
+      from {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
     }
 
     body {
-      background: #0f172a;
-      color: white;
+      background: linear-gradient(135deg, #0f172a 0%, #1a2847 100%);
+      color: #e2e8f0;
       scroll-behavior: smooth;
+      overflow-x: hidden;
+      min-height: 100vh;
     }
 
     header {
       position: fixed;
       width: 100%;
       top: 0;
-      background: rgba(255,255,255,0.05);
-      backdrop-filter: blur(10px);
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.1);
       display: flex;
       justify-content: space-between;
+      align-items: center;
       padding: 20px 10%;
       z-index: 1000;
+      animation: slideInRight 0.6s ease;
+    }
+
+    header h3 {
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    header nav {
+      display: flex;
+      gap: 30px;
     }
 
     header a {
-      color: white;
-      margin: 0 10px;
+      color: #cbd5e1;
       text-decoration: none;
-      transition: 0.3s;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      position: relative;
+    }
+
+    header a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+      transition: width 0.3s ease;
     }
 
     header a:hover {
       color: #38bdf8;
     }
 
+    header a:hover::after {
+      width: 100%;
+    }
+
     section {
-      padding: 100px 10%;
+      padding: 120px 10%;
       min-height: 100vh;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    section:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+
+    section:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
     }
 
     .hero {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: flex-start;
+      animation: fadeInUp 1s ease forwards;
     }
 
     .hero h1 {
-      font-size: 3rem;
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: -2px;
     }
 
-    .hero span {
+    .typing-effect {
       color: #38bdf8;
+      min-height: 60px;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      color: #94a3b8;
+      margin: 20px 0;
+      animation: fadeInUp 1.2s ease forwards;
     }
 
     .btn {
-      margin-top: 20px;
-      padding: 12px 25px;
-      border: none;
-      background: #38bdf8;
-      color: black;
+      margin-top: 40px;
+      padding: 15px 40px;
+      border: 2px solid #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
+      color: #38bdf8;
       cursor: pointer;
-      border-radius: 8px;
-      transition: 0.3s;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1.4s ease forwards;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+      transition: left 0.3s ease;
+      z-index: -1;
     }
 
     .btn:hover {
-      transform: scale(1.05);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3);
+      color: white;
+    }
+
+    .btn:hover::before {
+      left: 0;
     }
 
     .glass {
-      background: rgba(255,255,255,0.05);
-      border-radius: 15px;
-      padding: 20px;
-      backdrop-filter: blur(10px);
-      margin-top: 20px;
-      transition: 0.3s;
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(15px);
+      margin-top: 30px;
+      transition: all 0.4s ease;
+      animation: cardReveal 0.8s ease forwards;
     }
 
     .glass:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
+      border-color: rgba(56, 189, 248, 0.5);
+      box-shadow: 0 20px 50px rgba(56, 189, 248, 0.15);
+      background: rgba(30, 41, 59, 0.95);
+    }
+
+    .glass p {
+      line-height: 1.8;
+      color: #cbd5e1;
+      font-size: 1.05rem;
+    }
+
+    .glass a {
+      display: inline-block;
+      margin-top: 15px;
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .glass a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #38bdf8;
+      transition: width 0.3s ease;
+    }
+
+    .glass a:hover {
+      transform: translateX(5px);
+    }
+
+    .glass a:hover::after {
+      width: 100%;
+    }
+
+    .glass h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: #f1f5f9;
+      font-weight: 700;
     }
 
     .projects {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .projects .glass {
+      animation: cardReveal 0.8s ease forwards;
+    }
+
+    .projects .glass:nth-child(1) { animation-delay: 0.1s; }
+    .projects .glass:nth-child(2) { animation-delay: 0.2s; }
+    .projects .glass:nth-child(3) { animation-delay: 0.3s; }
+    .projects .glass:nth-child(4) { animation-delay: 0.4s; }
+    .projects .glass:nth-child(5) { animation-delay: 0.5s; }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 40px;
     }
 
     .skills span {
       display: inline-block;
-      margin: 8px;
-      padding: 8px 15px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 20px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(14, 165, 233, 0.1));
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 50px;
+      color: #cbd5e1;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .skills span:nth-child(1) { animation-delay: 0.1s; }
+    .skills span:nth-child(2) { animation-delay: 0.15s; }
+    .skills span:nth-child(3) { animation-delay: 0.2s; }
+    .skills span:nth-child(4) { animation-delay: 0.25s; }
+    .skills span:nth-child(5) { animation-delay: 0.3s; }
+    .skills span:nth-child(6) { animation-delay: 0.35s; }
+    .skills span:nth-child(7) { animation-delay: 0.4s; }
+    .skills span:nth-child(8) { animation-delay: 0.45s; }
+    .skills span:nth-child(9) { animation-delay: 0.5s; }
+    .skills span:nth-child(10) { animation-delay: 0.55s; }
+    .skills span:nth-child(11) { animation-delay: 0.6s; }
+
+    .skills span:hover {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(14, 165, 233, 0.2));
+      border-color: rgba(56, 189, 248, 0.6);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(56, 189, 248, 0.2);
+      color: #38bdf8;
     }
 
     footer {
       text-align: center;
-      padding: 20px;
-      background: rgba(255,255,255,0.05);
+      padding: 40px 10%;
+      background: rgba(15, 23, 42, 0.8);
+      border-top: 1px solid rgba(56, 189, 248, 0.1);
+      color: #64748b;
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 0.5s;
+    }
+
+    footer p {
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px 5%;
+      }
+
+      header nav {
+        gap: 15px;
+        font-size: 0.9rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      section {
+        padding: 80px 5%;
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -125,99 +405,156 @@
 </header>
 
 <section id="home" class="hero">
-  <h1>Hi, I'm <span>Mayank Singh</span></h1>
-  <p>Java Full Stack Developer | AI Enthusiast</p>
-  <button class="btn" onclick="scrollToSection('projects')">View Projects</button>
+  <h1>Hi, I'm Mayank Kumar Singh</h1>
+  <div class="typing-effect" id="typing"></div>
+  <p>Turning ideas into scalable solutions with clean code</p>
+  <button class="btn" onclick="scrollToSection('projects')">View My Work</button>
 </section>
 
 <section id="about">
   <h2>About Me</h2>
   <div class="glass">
     <p>
-      I am a passionate Java developer specializing in building scalable backend systems 
-      using Spring Boot and integrating AI-powered solutions. 
-      I focus on real-world problem solving and continuously improving my system design and development skills.
+      I'm a passionate Java developer specializing in building scalable backend systems using Spring Boot. 
+      I'm deeply interested in AI integration and creating real-world solutions that solve problems. 
+      My focus is on writing clean, maintainable code and continuously improving my system design skills. 
+      I love collaborating with teams and delivering high-quality software that makes an impact.
     </p>
   </div>
 </section>
 
 <section id="projects">
-  <h2>Projects</h2>
+  <h2>Featured Projects</h2>
 
   <div class="projects">
 
     <div class="glass">
-      <h3>Brain Tumor Detection System</h3>
-      <p>AI-based web app using MRI images and ML models with chatbot integration.</p>
-      <a href="https://github.com/Mayank-wind/brain-tumor-detection-system">GitHub</a>
-      <a href="LIVE_LINK">Live</a>
+      <h3>🧠 Brain Tumor Detection</h3>
+      <p>AI-powered web application using MRI image analysis with deep learning models and integrated chatbot for real-time user assistance.</p>
+      <a href="https://github.com/Mayank-wind/brain-tumor-detection-system" target="_blank">🔗 View Code</a>
     </div>
 
     <div class="glass">
-      <h3>AI Resume Analyzer</h3>
-      <p>Analyzes resumes and provides AI-powered feedback using APIs.</p>
-      <a href="https://github.com/Mayank-wind/ai-resume-analyzer">GitHub</a>
-      <a href="LIVE_LINK">Live</a>
+      <h3>📄 AI Resume Analyzer</h3>
+      <p>Intelligent resume analysis platform leveraging AI APIs to provide comprehensive feedback and optimization suggestions.</p>
+      <a href="https://github.com/Mayank-wind/ai-resume-analyzer" target="_blank">🔗 View Code</a>
     </div>
 
     <div class="glass">
-      <h3>AI Chatbot (Ollama)</h3>
-      <p>Local LLM chatbot built with Spring Boot for real-time responses.</p>
-      <a href="https://github.com/Mayank-wind/spring-ai-chatbot">GitHub</a>
-      <a href="LIVE_LINK">Live</a>
+      <h3>🤖 Spring AI Chatbot</h3>
+      <p>Local LLM integration with Spring Boot backend. Built with Ollama for offline AI capabilities and real-time conversational responses.</p>
+      <a href="https://github.com/Mayank-wind/spring-ai-chatbot" target="_blank">🔗 View Code</a>
     </div>
 
     <div class="glass">
-      <h3>URL Shortener</h3>
-      <p>Spring Boot backend service for fast URL redirection.</p>
-      <a href="https://github.com/Mayank-wind/url-shortener">GitHub</a>
-      <a href="LIVE_LINK">Live</a>
+      <h3>⚡ URL Shortener</h3>
+      <p>High-performance Spring Boot service for URL redirection with efficient data structure design and rapid retrieval mechanisms.</p>
+      <a href="https://github.com/Mayank-wind/url-shortener" target="_blank">🔗 View Code</a>
     </div>
 
     <div class="glass">
-      <h3>TCP Chat App</h3>
-      <p>Java socket-based real-time chat with multithreading.</p>
-      <a href="https://github.com/Mayank-wind/java-tcp-chat-application">GitHub</a>
-      <a href="LIVE_LINK">Live</a>
+      <h3>💬 TCP Chat Application</h3>
+      <p>Multi-threaded real-time chat system built with Java sockets. Demonstrates advanced networking concepts and concurrent programming patterns.</p>
+      <a href="https://github.com/Mayank-wind/java-tcp-chat-application" target="_blank">🔗 View Code</a>
     </div>
 
   </div>
 </section>
 
 <section id="skills">
-  <h2>Skills</h2>
+  <h2>Technical Skills</h2>
   <div class="skills">
     <span>Java</span>
     <span>Spring Boot</span>
-    <span>HTML</span>
-    <span>CSS</span>
-    <span>JavaScript</span>
+    <span>REST APIs</span>
     <span>MySQL</span>
     <span>MongoDB</span>
-    <span>Git</span>
+    <span>JavaScript</span>
+    <span>HTML & CSS</span>
+    <span>Git & GitHub</span>
     <span>Docker</span>
-    <span>REST APIs</span>
-    <span>AI APIs</span>
+    <span>AI/ML APIs</span>
+    <span>System Design</span>
   </div>
 </section>
 
 <section id="contact">
-  <h2>Contact</h2>
+  <h2>Let's Connect</h2>
   <div class="glass">
-    <p>Email: mayankkumarsingh262004@gmail.com</p>
-    <p>GitHub: https://github.com/Mayank-wind</p>
-    <p>LinkedIn: https://www.linkedin.com/in/mayankkumarsingh06/</p>
+    <p><strong>Email:</strong> mayankkumarsingh262004@gmail.com</p>
+    <p><strong>GitHub:</strong> <a href="https://github.com/Mayank-wind" target="_blank">github.com/Mayank-wind</a></p>
+    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/mayankkumarsingh06/" target="_blank">linkedin.com/in/mayankkumarsingh06/</a></p>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 Mayank Kumar Singh</p>
+  <p>© 2026 Mayank Kumar Singh | Crafted with passion for clean code</p>
 </footer>
 
 <script>
-  function scrollToSection(id) {
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  // Typing Effect
+  const typingTexts = [
+    'Java Full Stack Developer',
+    'AI Enthusiast',
+    'Problem Solver',
+    'Spring Boot Expert'
+  ];
+
+  let textIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function type() {
+    const element = document.getElementById('typing');
+    const currentText = typingTexts[textIndex];
+
+    if (!isDeleting && charIndex < currentText.length) {
+      element.textContent += currentText.charAt(charIndex);
+      charIndex++;
+      setTimeout(type, 80);
+    } else if (isDeleting && charIndex > 0) {
+      element.textContent = currentText.substring(0, charIndex - 1);
+      charIndex--;
+      setTimeout(type, 50);
+    } else if (!isDeleting && charIndex === currentText.length) {
+      isDeleting = true;
+      setTimeout(type, 2000);
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      textIndex = (textIndex + 1) % typingTexts.length;
+      setTimeout(type, 500);
+    }
   }
+
+  // Smooth Scroll
+  function scrollToSection(id) {
+    const element = document.getElementById(id);
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Start typing animation on page load
+  window.addEventListener('load', () => {
+    type();
+  });
+
+  // Intersection Observer for fade-in animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('section').forEach(section => {
+    observer.observe(section);
+  });
 </script>
 
 </body>
