@@ -357,6 +357,42 @@
       width: 100%;
     }
 
+.title-with-btn {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .demo-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #ffffff !important;
+      text-decoration: none !important;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .demo-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+      background: linear-gradient(135deg, #059669, #047857);
+    }
+
+    .demo-btn::after {
+      display: none !important;
+    }
+
     .glass h3 {
       font-size: 1.4rem;
       margin-bottom: 15px;
@@ -534,23 +570,26 @@
   <div class="projects">
 
     <div class="glass">
-      <h3>🧠 Brain Tumor Detection <span style="color: #fbbf24; font-size: 0.8em;">⭐ Featured</span></h3>
+      <div class="title-with-btn">
+        <h3 style="margin-bottom: 0;">📄 AI Resume Analyzer <span style="color: #fbbf24; font-size: 0.8em;">⭐ Featured</span></h3>
+        <a href="http://43.205.99.107:8081" target="_blank" class="demo-btn">✨ Try Live</a>
+      </div>
+      <p>
+        Developed an AI-powered resume analysis platform that evaluates resumes and provides intelligent feedback using LLM-based APIs. 
+        Designed a scalable backend using Spring Boot to process user inputs and generate real-time optimization suggestions.
+      </p>
+      <p><strong>Tech:</strong> Java, Spring Boot, REST APIs, AI APIs, AWS</p>
+      <a href="https://github.com/Mayank-wind/ai-resume-analyzer" target="_blank">🔗 View Code</a>
+    </div>
+
+    <div class="glass">
+      <h3 style="margin-bottom: 15px;">🧠 Brain Tumor Detection <span style="color: #fbbf24; font-size: 0.8em;">⭐ Featured</span></h3>
       <p>
         Developed an AI-powered web application for brain tumor detection using MRI image analysis and deep learning models. 
         Designed a scalable Spring Boot backend and integrated a chatbot for real-time medical insights, improving user interaction and accessibility.
       </p>
       <p><strong>Tech:</strong> Python, Spring Boot, REST APIs, Machine Learning</p>
       <a href="https://github.com/Mayank-wind/brain-tumor-detection-system" target="_blank">🔗 View Code</a>
-    </div>
-
-    <div class="glass">
-      <h3>📄 AI Resume Analyzer</h3>
-      <p>
-        Developed an AI-powered resume analysis platform that evaluates resumes and provides intelligent feedback using LLM-based APIs. 
-        Designed a scalable backend using Spring Boot to process user inputs and generate real-time optimization suggestions.
-      </p>
-      <p><strong>Tech:</strong> Java, Spring Boot, REST APIs, AI APIs</p>
-      <a href="https://github.com/Mayank-wind/ai-resume-analyzer" target="_blank">🔗 View Code</a>
     </div>
 
     <div class="glass">
